@@ -27,6 +27,11 @@ terraform fmt -recursive
 terraform destroy
 ```
 
+```shell
+# デプロイパッケージを作成
+zip ./.aws/function.zip index.mjs
+```
+
 
 ```
 resource "aws_dynamodb_table" "users" {
