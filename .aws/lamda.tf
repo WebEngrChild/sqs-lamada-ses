@@ -43,6 +43,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "ses:SendEmail",
           "sqs:DeleteMessage",
           "sqs:ReceiveMessage",
+          "sqs:GetQueueAttributes",
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
