@@ -42,6 +42,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
         Action = [
           "ses:SendEmail",
           "sqs:DeleteMessage",
+          "sqs:ReceiveMessage",
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
