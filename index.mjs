@@ -1,6 +1,5 @@
-import { SES } from 'aws-sdk';
-
-const ses = new SES();
+const AWS = require('aws-sdk');
+const ses = new AWS.SES();
 
 export async function handler(event) {
   for (const record of event.Records) {
