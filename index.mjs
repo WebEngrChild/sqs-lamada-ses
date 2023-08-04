@@ -1,7 +1,14 @@
-const AWS = require('aws-sdk');
+// 必要なモジュールをインポート
+import AWS from 'aws-sdk';
+
+// AWS SDKの設定
+AWS.config.update({ region: 'us-east-1' }); // リージョンを適切なものに変更する
+
+// 新しいAWS.SESオブジェクトを作成
 const ses = new AWS.SES();
 
-export async function handler(event) {
+// ハンドラ関数をエクスポート
+export const handler = async function(event) {
   for (const record of event.Records) {
     try {
       const body = JSON.parse(record.body);
@@ -32,4 +39,4 @@ export async function handler(event) {
       console.error('Error processing record:', record, 'Error:', error);
     }
   }
-}
+};

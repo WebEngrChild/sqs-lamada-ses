@@ -24,8 +24,13 @@ terraform destroy
 ```
 
 ```shell
+# nodeモジュールインストール
+npm install aws-sdk
+```
+
+```shell
 # デプロイパッケージを作成
-zip -r ./.aws/function.zip index.mjs
+zip -r ./.aws/function.zip index.mjs node_modules
 ```
 
 ```shell
