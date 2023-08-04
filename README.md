@@ -39,10 +39,10 @@ zip -r ./.aws/function.zip index.mjs node_modules
 
 ```shell
 # Lamdaテスト
-aws lambda invoke
---function-name my_lambda
---payload file://event.json
---cli-binary-format raw-in-base64-out
+aws lambda invoke \
+--function-name my_lambda \
+--payload file://event.json \
+--cli-binary-format raw-in-base64-out \
 output.txt
 ```
 
