@@ -1,5 +1,5 @@
 
-### Terraform
+## Terraform
 
 ```shell
 # コンテナを立ち上げる
@@ -23,7 +23,9 @@ terraform fmt -recursive
 terraform destroy
 ```
 
-### Lamda
+## Lamda
+
+### Node.js（Sending Email）
 
 ```shell
 # デプロイパッケージを作成
@@ -44,4 +46,11 @@ aws lambda invoke \
 --payload file://event.json \
 --cli-binary-format raw-in-base64-out \
 output.txt
+```
+
+### Go（Sending SQS with Data from DynamoDB）
+
+```shell
+go mod tidy
+go mod download
 ```
