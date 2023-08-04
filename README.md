@@ -28,10 +28,23 @@ terraform destroy
 ```
 
 ```shell
-# デプロイパッケージを作成
-zip ./.aws/function.zip index.mjs
+# nodeモジュールインストール
+npm install aws-sdk
 ```
 
+```shell
+# デプロイパッケージを作成
+zip -r ./.aws/function.zip index.mjs node_modules
+```
+
+```shell
+# Lamdaテスト
+aws lambda invoke
+--function-name my_lambda
+--payload file://event.json
+--cli-binary-format raw-in-base64-out
+output.txt
+```
 
 ```
 resource "aws_dynamodb_table" "users" {
