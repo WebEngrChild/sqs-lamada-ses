@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "lambda" {
   function_name = "my_lambda"
   handler       = "index.handler"
-  runtime       = "nodejs16.x"
+  runtime       = "nodejs18.x"
   role          = aws_iam_role.lambda_role.arn
   filename      = "function.zip"
 }

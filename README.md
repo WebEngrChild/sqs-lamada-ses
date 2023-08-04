@@ -25,12 +25,12 @@ terraform destroy
 
 ```shell
 # nodeモジュールインストール
-npm install aws-sdk
+npm install @aws-sdk/client-ses
 ```
 
 ```shell
 # デプロイパッケージを作成
-zip -r ./.aws/function.zip index.mjs node_modules
+zip -r ./.aws/function.zip index.mjs
 ```
 
 ```shell

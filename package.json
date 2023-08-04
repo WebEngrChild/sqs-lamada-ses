@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.382.0",
     "aws-sdk": "^2.1429.0"
   }
 }
