@@ -23,6 +23,8 @@ terraform fmt -recursive
 terraform destroy
 ```
 
+### Lamda
+
 ```shell
 # nodeモジュールインストール
 npm install @aws-sdk/client-ses
@@ -34,14 +36,14 @@ zip -r ./.aws/function.zip index.mjs
 ```
 
 ```shell
-# Lamda更新
+# 更新
 aws lambda update-function-code \
     --function-name my_lambda \
     --zip-file fileb://.aws/function.zip
 ```
 
 ```shell
-# Lamdaテスト
+# テスト
 aws lambda invoke \
 --function-name my_lambda \
 --payload file://event.json \
