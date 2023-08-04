@@ -1,5 +1,5 @@
 
-### Terraformでリソース構築
+### Terraform
 
 ```shell
 # コンテナを立ち上げる
@@ -24,11 +24,6 @@ terraform destroy
 ```
 
 ### Lamda
-
-```shell
-# nodeモジュールインストール
-npm install @aws-sdk/client-ses
-```
 
 ```shell
 # デプロイパッケージを作成
