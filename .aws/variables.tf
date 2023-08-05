@@ -10,5 +10,5 @@ variable "environment" {
 
 variable "your_email" {
   type    = string
-  default = "factor_9mmplusfact@yahoo.co.jp"
+  default = "<ご自身のメールアドレスを入力>"
 }
