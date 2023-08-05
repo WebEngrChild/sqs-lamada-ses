@@ -1,3 +1,20 @@
+## Lamda
+
+### Node.js（Sending Email）
+
+```shell
+# デプロイパッケージを作成
+zip -r ./.aws/ses_email_sender.zip index.mjs
+```
+
+### Go（Sending SQS with Data from DynamoDB）
+
+```shell
+# デプロイパッケージを作成
+GOOS=linux GOARCH=amd64 go build -o main
+zip -r ./.aws/sqs_sender.zip main
+```
+
 ## Terraform
 
 ```shell
@@ -22,40 +39,7 @@ terraform fmt -recursive
 terraform destroy
 ```
 
-## Lamda
-
-### Node.js（Sending Email）
-
-```shell
-# デプロイパッケージを作成
-zip -r ./.aws/ses_email_sender.zip index.mjs
-```
-
-```shell
-# 更新
-aws lambda update-function-code \
-    --function-name ses_email_sender \
-    --zip-file fileb://.aws/ses_email_sender.zip
-```
-
-```shell
-# テスト
-aws lambda invoke \
---function-name ses_email_sender \
---payload file://event.json \
---cli-binary-format raw-in-base64-out \
-output.txt
-```
-
-### Go（Sending SQS with Data from DynamoDB）
-
-```shell
-# デプロイパッケージを作成
-GOOS=linux GOARCH=amd64 go build -o main
-zip -r ./.aws/sqs_sender.zip main
-```
-
-### DynamoDB
+## DynamoDB
 
 ```shell
 aws dynamodb put-item \
