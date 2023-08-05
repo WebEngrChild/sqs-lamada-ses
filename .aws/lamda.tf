@@ -10,6 +10,12 @@ resource "aws_lambda_function" "ses_email_sender" {
   filename      = "ses_email_sender.zip"
 }
 
+resource "aws_lambda_event_source_mapping" "sqs_mapping" {
+  event_source_arn = aws_sqs_queue.queue.arn
+  function_name    = aws_lambda_function.ses_email_sender.arn
+  batch_size       = 10
+}
+
 resource "aws_iam_role" "lambda_role_for_ses" {
   name = "lambda_role_for_ses"
 

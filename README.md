@@ -42,13 +42,14 @@ terraform destroy
 ## DynamoDB
 
 ```shell
+# テスト用レコード作成
 aws dynamodb put-item \
     --table-name users \
     --item '{
         "user_id": {"S": "1"},
         "timestamp": {"S": "2023-08-03T10:00:00Z"},
         "status": {"S": "a"},
-        "mailAddress": {"S": "hoge"},
+        "mailAddress": {"S": "factor_9mmplusfact@yahoo.co.jp"},
         "name": {"S": "Jone"}
     }' \
     --region ap-northeast-1
