@@ -1,26 +1,17 @@
 ## Lamda
 
-### Node.js（Sending Email）
-
-```shell
-# デプロイパッケージを作成
-zip -r ./.aws/lamda/ses_email_sender.zip index.mjs
-```
-
-```shell
-# テスト
-aws lambda invoke \
---function-name ses_email_sender \
---payload file://event.json \
---cli-binary-format raw-in-base64-out \
-output.txt
-```
-
 ```shell
 # 更新
 aws lambda update-function-code \
     --function-name ses_email_sender \
     --zip-file fileb://.aws/ses_email_sender.zip
+```
+
+### Node.js（Sending Email）
+
+```shell
+# デプロイパッケージを作成
+zip -r ./.aws/lamda/ses_email_sender.zip index.mjs
 ```
 
 ### Go（Sending SQS with Data from DynamoDB）
@@ -29,20 +20,6 @@ aws lambda update-function-code \
 # デプロイパッケージを作成
 GOOS=linux GOARCH=amd64 go build -o main
 zip -r ./.aws/lamda/sqs_sender.zip main
-```
-
-```shell
-# テスト
-aws lambda invoke \
---function-name sqs_sender \
-output.txt
-```
-
-```shell
-# 更新
-aws lambda update-function-code \
-    --function-name sqs_sender \
-    --zip-file fileb://.aws/sqs_sender.zip
 ```
 
 ## Terraform

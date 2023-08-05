@@ -44,3 +44,4 @@ terraform.rc
 .env
 *.log
 node_modules/
+/main
