@@ -4,7 +4,7 @@
 
 ```shell
 # デプロイパッケージを作成
-zip -r ./.aws/ses_email_sender.zip index.mjs
+zip -r ./.aws/lamda/ses_email_sender.zip index.mjs
 ```
 
 ```shell
@@ -28,7 +28,7 @@ aws lambda update-function-code \
 ```shell
 # デプロイパッケージを作成
 GOOS=linux GOARCH=amd64 go build -o main
-zip -r ./.aws/sqs_sender.zip main
+zip -r ./.aws/lamda/sqs_sender.zip main
 ```
 
 ```shell

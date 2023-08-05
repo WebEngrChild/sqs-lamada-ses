@@ -7,7 +7,7 @@ resource "aws_lambda_function" "ses_email_sender" {
   handler       = "index.handler"
   runtime       = "nodejs18.x"
   role          = aws_iam_role.lambda_role_for_ses.arn
-  filename      = "ses_email_sender.zip"
+  filename      = "lamda/ses_email_sender.zip"
   environment {
     variables = {
       EMAIL_SOURCE = var.your_email
@@ -77,7 +77,7 @@ resource "aws_lambda_function" "sqs_sender" {
   handler       = "main"
   runtime       = "go1.x"
   role          = aws_iam_role.lambda_role_for_sqs.arn
-  filename      = "sqs_sender.zip"
+  filename      = "lamda/sqs_sender.zip"
   environment {
     variables = {
       SQS_QUEUE_URL = aws_sqs_queue.queue.url
