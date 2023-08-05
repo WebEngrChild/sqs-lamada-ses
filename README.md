@@ -29,20 +29,20 @@ terraform destroy
 
 ```shell
 # デプロイパッケージを作成
-zip -r ./.aws/function.zip index.mjs
+zip -r ./.aws/ses_email_sender.zip index.mjs
 ```
 
 ```shell
 # 更新
 aws lambda update-function-code \
-    --function-name my_lambda \
-    --zip-file fileb://.aws/function.zip
+    --function-name ses_email_sender \
+    --zip-file fileb://.aws/ses_email_sender.zip
 ```
 
 ```shell
 # テスト
 aws lambda invoke \
---function-name my_lambda \
+--function-name ses_email_sender \
 --payload file://event.json \
 --cli-binary-format raw-in-base64-out \
 output.txt
@@ -59,4 +59,9 @@ go mod tidy
 ```shell
 # ビルド
 GOOS=linux GOARCH=amd64 go build -o main
+```
+
+```shell
+# デプロイパッケージを作成
+zip -r ./.aws/sqs_sender.zip main
 ```

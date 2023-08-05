@@ -1,14 +1,14 @@
-resource "aws_lambda_function" "lambda" {
-  function_name = "my_lambda"
+resource "aws_lambda_function" "ses_email_sender" {
+  function_name = "ses_email_sender"
   handler       = "index.handler"
   runtime       = "nodejs18.x"
   role          = aws_iam_role.lambda_role.arn
-  filename      = "function.zip"
+  filename      = "ses_email_sender.zip"
 }
 
 resource "aws_lambda_event_source_mapping" "event_source_mapping" {
   event_source_arn = aws_sqs_queue.queue.arn
-  function_name    = aws_lambda_function.lambda.arn
+  function_name    = aws_lambda_function.ses_email_sender.arn
   enabled          = true
   batch_size       = 5
 }
