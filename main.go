@@ -2,12 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"log"
 	"os"
 )
 
@@ -41,21 +43,27 @@ func HandleRequest() (string, error) {
 
 	result, err := db.GetItem(params)
 	if err != nil {
-		return "", err
+		errorMessage := fmt.Sprintf("Error getting item from DynamoDB: %v", err)
+		log.Println(errorMessage)
+		return "", fmt.Errorf(errorMessage)
 	}
 
 	user := User{}
 	err = dynamodbattribute.UnmarshalMap(result.Item, &user)
 	if err != nil {
-		return "", err
+		errorMessage := fmt.Sprintf("Error unmarshalling result from DynamoDB: %v", err)
+		log.Println(errorMessage)
+		return "", fmt.Errorf(errorMessage)
 	}
 
 	messageBody, err := json.Marshal(map[string]string{
-		"mailAddress": user.MailAddress,
-		"name":        user.Name,
+		"email": user.MailAddress,
+		"name":  user.Name,
 	})
 	if err != nil {
-		return "", err
+		errorMessage := fmt.Sprintf("Error marshalling message body: %v", err)
+		log.Println(errorMessage)
+		return "", fmt.Errorf(errorMessage)
 	}
 
 	sqsQueueURL := os.Getenv("SQS_QUEUE_URL")
@@ -66,7 +74,9 @@ func HandleRequest() (string, error) {
 
 	_, err = sqsSvc.SendMessage(sqsParams)
 	if err != nil {
-		return "", err
+		errorMessage := fmt.Sprintf("Error sending message to SQS: %v", err)
+		log.Println(errorMessage)
+		return "", fmt.Errorf(errorMessage)
 	}
 
 	return "Success", nil

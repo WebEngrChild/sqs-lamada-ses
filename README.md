@@ -7,12 +7,42 @@
 zip -r ./.aws/ses_email_sender.zip index.mjs
 ```
 
+```shell
+# テスト
+aws lambda invoke \
+--function-name ses_email_sender \
+--payload file://event.json \
+--cli-binary-format raw-in-base64-out \
+output.txt
+```
+
+```shell
+# 更新
+aws lambda update-function-code \
+    --function-name ses_email_sender \
+    --zip-file fileb://.aws/ses_email_sender.zip
+```
+
 ### Go（Sending SQS with Data from DynamoDB）
 
 ```shell
 # デプロイパッケージを作成
 GOOS=linux GOARCH=amd64 go build -o main
 zip -r ./.aws/sqs_sender.zip main
+```
+
+```shell
+# テスト
+aws lambda invoke \
+--function-name sqs_sender \
+output.txt
+```
+
+```shell
+# 更新
+aws lambda update-function-code \
+    --function-name sqs_sender \
+    --zip-file fileb://.aws/sqs_sender.zip
 ```
 
 ## Terraform
