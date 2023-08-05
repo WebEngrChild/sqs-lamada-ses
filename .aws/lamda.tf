@@ -67,6 +67,11 @@ resource "aws_lambda_function" "sqs_sender" {
   runtime       = "go1.x"
   role          = aws_iam_role.lambda_role_for_sqs.arn
   filename      = "sqs_sender.zip"
+  environment {
+    variables = {
+      SQS_QUEUE_URL = aws_sqs_queue.queue.url
+    }
+  }
 }
 
 # LambdaのIAMロール

@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"os"
 )
 
 type User struct {
@@ -57,8 +58,9 @@ func HandleRequest() (string, error) {
 		return "", err
 	}
 
+	sqsQueueURL := os.Getenv("SQS_QUEUE_URL")
 	sqsParams := &sqs.SendMessageInput{
-		QueueUrl:    aws.String("SQS_QUEUE_URL"),
+		QueueUrl:    aws.String(sqsQueueURL),
 		MessageBody: aws.String(string(messageBody)),
 	}
 
