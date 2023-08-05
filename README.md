@@ -51,6 +51,12 @@ output.txt
 ### Go（Sending SQS with Data from DynamoDB）
 
 ```shell
+# Goのセットアップ
+go mod init
 go mod tidy
-go mod download
+```
+
+```shell
+# ビルド
+GOOS=linux GOARCH=amd64 go build -o main
 ```
