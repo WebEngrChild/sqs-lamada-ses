@@ -50,11 +50,7 @@ output.txt
 ### Go（Sending SQS with Data from DynamoDB）
 
 ```shell
-# ビルド
-GOOS=linux GOARCH=amd64 go build -o main
-```
-
-```shell
 # デプロイパッケージを作成
+GOOS=linux GOARCH=amd64 go build -o main
 zip -r ./.aws/sqs_sender.zip main
 ```
