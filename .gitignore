@@ -45,3 +45,4 @@ terraform.rc
 *.log
 node_modules/
 /main
+.aws/lamda/*.zip
