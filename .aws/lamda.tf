@@ -8,6 +8,11 @@ resource "aws_lambda_function" "ses_email_sender" {
   runtime       = "nodejs18.x"
   role          = aws_iam_role.lambda_role_for_ses.arn
   filename      = "ses_email_sender.zip"
+  environment {
+    variables = {
+      EMAIL_SOURCE = var.your_email
+    }
+  }
 }
 
 resource "aws_lambda_event_source_mapping" "sqs_mapping" {

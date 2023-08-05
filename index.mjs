@@ -14,6 +14,8 @@ export const handler = async function(event) {
         continue;
       }
 
+      const sourceEmail = process.env.EMAIL_SOURCE || 'null';
+
       const params = {
         Destination: {
           ToAddresses: [email],
@@ -24,7 +26,7 @@ export const handler = async function(event) {
           },
           Subject: { Data: `${name}様へのタイトル` },
         },
-        Source: 'factor_9mmplusfact@yahoo.co.jp',
+        Source: sourceEmail,
       };
 
       const command = new SendEmailCommand(params);
