@@ -1,4 +1,3 @@
-
 ## Terraform
 
 ```shell
@@ -49,12 +48,6 @@ output.txt
 ```
 
 ### Go（Sending SQS with Data from DynamoDB）
-
-```shell
-# Goのセットアップ
-go mod init
-go mod tidy
-```
 
 ```shell
 # ビルド
