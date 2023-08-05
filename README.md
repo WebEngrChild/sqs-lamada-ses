@@ -1,12 +1,5 @@
 ## Lamda
 
-```shell
-# 更新
-aws lambda update-function-code \
-    --function-name ses_email_sender \
-    --zip-file fileb://.aws/ses_email_sender.zip
-```
-
 ### Node.js（Sending Email）
 
 ```shell
