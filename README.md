@@ -54,3 +54,18 @@ output.txt
 GOOS=linux GOARCH=amd64 go build -o main
 zip -r ./.aws/sqs_sender.zip main
 ```
+
+### DynamoDB
+
+```shell
+aws dynamodb put-item \
+    --table-name users \
+    --item '{
+        "user_id": {"S": "1"},
+        "timestamp": {"S": "2023-08-03T10:00:00Z"},
+        "status": {"S": "a"},
+        "mailAddress": {"S": "hoge"},
+        "name": {"S": "Jone"}
+    }' \
+    --region ap-northeast-1
+```
