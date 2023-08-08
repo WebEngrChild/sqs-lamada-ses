@@ -1,5 +1,5 @@
 /*
-SES
+後段のバッチ処理とSESへメッセージ送信
 */
 
 resource "aws_lambda_function" "ses_email_sender" {
@@ -69,7 +69,7 @@ resource "aws_iam_role_policy" "lambda_policy_for_ses" {
 }
 
 /*
-SQS
+前段のSQSにキューイングするLamda
 */
 
 resource "aws_lambda_function" "sqs_sender" {
