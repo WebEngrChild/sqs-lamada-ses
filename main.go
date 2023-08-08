@@ -29,8 +29,11 @@ func HandleRequest() (string, error) {
 	db := dynamodb.New(sess)
 	sqsSvc := sqs.New(sess)
 
+	// バッチ処理の対象となるキーを固定値で指定
+	// ex. DynamoDBからデータを取得する
+
 	tableName := "users"
-	userID := "1" // バッチ処理の対象となるキーを固定値で指定
+	userID := "1"
 
 	params := &dynamodb.GetItemInput{
 		TableName: aws.String(tableName),

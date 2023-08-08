@@ -9,7 +9,7 @@ export const handler = async function(event) {
       const email = body.email;
       const name = body.name;
 
-      // ここで何かしらの処理を行う想定
+      // ここで何かしらの処理を行う想定（ex.DynamoDBのデータ）
 
       if (!email || !name) {
         console.error('Email or name missing from the record:', record);
