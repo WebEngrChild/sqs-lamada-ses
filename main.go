@@ -30,7 +30,7 @@ func HandleRequest() (string, error) {
 	sqsSvc := sqs.New(sess)
 
 	tableName := "users"
-	userID := "1"
+	userID := "1" // バッチ処理の対象となるキーを固定値で指定
 
 	params := &dynamodb.GetItemInput{
 		TableName: aws.String(tableName),
