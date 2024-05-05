@@ -77,7 +77,10 @@ resource "aws_lambda_function" "sqs_sender" {
   handler       = "main"
   runtime       = "go1.x"
   role          = aws_iam_role.lambda_role_for_sqs.arn
-  filename      = "lamda/sqs_sender.zip"
+
+  package_type  = "Image"
+  image_uri = "xxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/go-custom-runtime-lambda:latest"
+
   environment {
     variables = {
       SQS_QUEUE_URL = aws_sqs_queue.queue.url
