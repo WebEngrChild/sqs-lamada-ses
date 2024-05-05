@@ -74,8 +74,6 @@ resource "aws_iam_role_policy" "lambda_policy_for_ses" {
 
 resource "aws_lambda_function" "sqs_sender" {
   function_name = "sqs_sender"
-  handler       = "main"
-  runtime       = "go1.x"
   role          = aws_iam_role.lambda_role_for_sqs.arn
 
   package_type  = "Image"
