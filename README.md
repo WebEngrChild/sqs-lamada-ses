@@ -15,6 +15,18 @@ GOOS=linux GOARCH=amd64 go build -o main
 zip -r ./.aws/lamda/sqs_sender.zip main
 ```
 
+#### ECRへカスタムランタイムデプロイ
+
+```shell
+docker build --platform linux/amd64 -t go-custom-runtime-lambda .
+
+aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin xxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com
+
+docker tag go-custom-runtime-lambda:latest xxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/go-custom-runtime-lambda:latest
+
+docker push xxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/go-custom-runtime-lambda:latest
+```
+
 ## Terraform
 
 ```shell
